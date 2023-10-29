@@ -8,21 +8,13 @@ arrBtn.forEach(btn => btn.addEventListener('click', function () {
         screenValue.value += btn.value;
     }
     else {
-        const check = screenValue.value.split('');
-        console.log(check);
-        for (let i = 0; i < check.length; i++){
-            console.log(check[i],check[i+1]);
-            if ((Number(check[i]) !== NaN) && (Number(check[i + 1]) !== NaN)) {
-                console.log('test');
-                screenValue.value = 'error';
-                return 0;
-            }
-        }
+       try {
             screenValue.value = Number(eval(screenValue.value));
             console.log(eval(screenValue.value))
             console.log(typeof (screenValue.value));
-        
-        
-        
+        }
+        catch {
+            screenValue.value = "error";
+        }
     }
 }))
